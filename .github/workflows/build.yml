@@ -2,9 +2,15 @@ name: Build
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+    paths-ignore:
+      - "*.md"
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+    paths-ignore:
+      - "*.md"
 
 permissions:
   pull-requests: write
@@ -50,7 +56,7 @@ jobs:
         name: coverage-report
         path: coverage/
 
-  build:
+  compile:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -80,4 +86,4 @@ jobs:
         diff: true
         diff-branch: main
         coverage-summary-title: "Code Coverage Summary"
-        diff-storage: coverage/reports
+        diff-storage: coverage-reports
