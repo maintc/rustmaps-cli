@@ -1,0 +1,15 @@
+.DS_Store
+.vscode
+config.json
+*.sv.csv
+*.csv
+*.log
+coverage
+.coverage
+rustmaps
+rustmaps-cli
+.env
+!examples/test.csv
+!cmd/rustmaps
+!pkg/rustmaps
+!tests/files/*.csv

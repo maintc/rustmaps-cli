@@ -1,0 +1,41 @@
+name: Force Wipe Generation
+
+on:
+  schedule:
+    - cron: '0 18 * * 4'  # Runs every Thursday at 18:00 UTC
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if first Thursday
+        id: check_first_thursday
+        run: |
+          TODAY=$(date +%Y-%m-%d)
+          FIRST_THURSDAY=$(date -d "$(date +%Y-%m-01) +$(( (4 - $(date -d $(date +%Y-%m-01) +%u) + 7) % 7 )) days" +%Y-%m-%d)
+          echo "Today: $TODAY"
+          echo "First Thursday: $FIRST_THURSDAY"
+          if [ "$TODAY" != "$FIRST_THURSDAY" ]; then
+            echo "Not the first Thursday of the month. Exiting."
+            exit 0
+          fi
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install rustmaps
+      
+      - name: Generate
+        run: |
+          rustmaps auth ${{ secrets.RUSTMAPS_API_KEY }}
+          rustmaps import -c test.csv
+          rustmaps generate -n test

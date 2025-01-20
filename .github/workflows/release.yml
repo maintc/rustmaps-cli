@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  release:
+    types: [created]
+
+permissions:
+    contents: write
+    packages: write
+
+jobs:
+  releases-matrix:
+    name: Release Go Binary
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Build and publish in parallel: linux/386, linux/amd64, linux/arm64, windows/386, windows/amd64, darwin/amd64, darwin/arm64
+        goos: [linux, windows, darwin]
+        goarch: [amd64, arm64]
+        exclude:
+          - goarch: arm64
+            goos: windows
+    env:
+      CI: true
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v5
+      with:
+        go-version: 1.23.4
+
+    - name: Install dependencies
+      run: |
+        go mod download
+
+    - name: Build
+      run: |
+        mkdir -p dist
+        output_name="rustmaps"
+        if [[ "${{ matrix.goos }}" == "windows" ]]; then
+          output_name="${output_name}.exe"
+        fi
+        GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o dist/${output_name} ./
+
+    - name: Package binary
+      run: |
+        platform="${{ matrix.goos }}-${{ matrix.goarch }}"
+        zip_file="rustmaps-${platform}.zip"
+        cd dist
+        zip $zip_file rustmaps*
+        cd ..
+
+    - name: Upload to Release
+      uses: actions/github-script@v6
+      env:
+        RELEASE_ID: ${{ github.event.release.id }}
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const fs = require('fs').promises;
+          const path = `dist/rustmaps-${{ matrix.goos }}-${{ matrix.goarch }}.zip`;
+          const data = await fs.readFile(path);
+          await github.rest.repos.uploadReleaseAsset({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            release_id: process.env.RELEASE_ID,
+            name: `rustmaps-${{ matrix.goos }}-${{ matrix.goarch }}.zip`,
+            data,
+            headers: {
+              'content-type': 'application/zip',
+              'content-length': data.length
+            }
+          });
