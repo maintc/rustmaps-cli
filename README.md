@@ -11,9 +11,9 @@
 1. [Overview](#-overview)
 2. [Features](#%EF%B8%8F-features)
 3. [Installation](#-installation)
-4. [Usage](#-usage)
-    - [Setting the API Key](#set-api-key)
-    - [Generating maps](#generate-maps)
+4. [Usage](#%EF%B8%8F-usage)
+    - [Setting the API Key](#-setting-your-api-key)
+    - [Generating maps](#%EF%B8%8F-generate-maps)
         - [Generate a procedural map with seed and size](#generate-a-procedural-map-with-seed-and-size)
         - [Generate a procedural map with seed and size (staging branch)](#generate-a-procedural-map-with-seed-and-size-staging-branch)
         - [Generate a procedural map with random seed](#generate-a-procedural-map-with-random-seed)
@@ -22,10 +22,10 @@
         - [Generate maps from a csv file (procedural and custom)](#generate-maps-from-a-csv-file-procedural-and-custom)
         - [Download generated maps](#download-generated-maps)
         - [Download generated maps to a specified directory](#download-generated-maps-to-a-specified-directory)
-    - [Opening maps in the browser](#🌐-opening-maps-in-the-browser)
-    - [Using a `csv` file](#📚-using-a-csv-file)
-6. [Storage Locations](#where-is-stuff-stored)
-7. [Disclaimers](#️-disclaimers)
+    - [Opening maps in the browser](#-opening-maps-in-the-browser)
+    - [Using a `csv` file](#-using-a-csv-file)
+6. [Storage Locations](#-file-structurelocations)
+7. [Disclaimers](#%EF%B8%8F-disclaimers)
 
 ## 📖 Overview
 
@@ -49,7 +49,7 @@ This tool takes map parameter input either via command line or `csv` file (colum
 
 ### Quick Install
 
-If you just want to get up and running quickly, we provide a binary for just aboout every platform. You can download the binary for your platform from our [releases](https://github.com/maintc/rustmaps-cli/releases) page.
+If you just want to get up and running quickly, the project provides a binary for `macOS`, `Linux`, and `Windows`. You can download the binary for your platform from the [releases](https://github.com/maintc/rustmaps-cli/releases) page.
 
 ### Developers and golang people
 
@@ -73,7 +73,6 @@ Available Commands:
   completion  Generate the autocompletion script for the specified shell
   generate    Generate custom and procedural maps
   open        Open generated maps in the browser
-  tutorial    Run through the tutorial and learn to get started
 
 Flags:
   -h, --help               help for rustmaps
