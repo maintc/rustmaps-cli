@@ -23,6 +23,16 @@ func TestGenerator_LoadConfig(t *testing.T) {
 			wantErr: false,
 		},
 		{
+			name: "Test LoadConfig with file",
+			generator: NewMockedGenerator(t, &Generator{
+				configPath: "/etc/hosts",
+				config:     types.Config{},
+				maps:       []*types.Map{},
+				rmcli:      &api.RustMapsClient{},
+			}),
+			wantErr: true,
+		},
+		{
 			name: "Test LoadConfig fail",
 			generator: NewMockedGenerator(t, &Generator{
 				configPath: "/tmp/asdfjasdlf/sadf432323/./.23",
@@ -58,7 +68,25 @@ func TestGenerator_SaveConfig(t *testing.T) {
 		generator *Generator
 		wantErr   bool
 	}{
-		// TODO: Add test cases.
+		{
+			name: "Test SaveConfig",
+			generator: NewMockedGenerator(t, &Generator{
+				config: types.Config{},
+				maps:   []*types.Map{},
+				rmcli:  &api.RustMapsClient{},
+			}),
+			wantErr: false,
+		},
+		{
+			name: "Test SaveConfig fail",
+			generator: NewMockedGenerator(t, &Generator{
+				configPath: "/tmp/asdfjasdlf/sadf432323/./.23",
+				config:     types.Config{},
+				maps:       []*types.Map{},
+				rmcli:      &api.RustMapsClient{},
+			}),
+			wantErr: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
