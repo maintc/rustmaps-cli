@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -29,43 +30,78 @@ func (g *Generator) OverrideDownloadsDir(log *zap.Logger, dir string) {
 
 // DownloadFile downloads a file using net/http
 func (g *Generator) DownloadFile(log *zap.Logger, url, target string) error {
+	maxRetries := 3
+	backoff := 5 * time.Second
+
 	client := &http.Client{
 		Timeout: 10 * time.Second,
 	}
 
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		log.Error("Error creating request", zap.Error(err))
-		return err
+	var lastErr error
+	for attempt := 0; attempt <= maxRetries; attempt++ {
+		if attempt > 0 {
+			sleepDuration := backoff * time.Duration(math.Pow(2, float64(attempt-1)))
+			log.Info("Retrying download",
+				zap.Int("attempt", attempt),
+				zap.Duration("backoff", sleepDuration))
+			time.Sleep(sleepDuration)
+		}
+
+		req, err := http.NewRequest("GET", url, nil)
+		if err != nil {
+			lastErr = err
+			log.Error("Error creating request", zap.Error(err))
+			continue
+		}
+
+		resp, err := client.Do(req)
+		if err != nil {
+			lastErr = err
+			log.Error("Error downloading file",
+				zap.Error(err),
+				zap.Int("attempt", attempt))
+			continue
+		}
+
+		// Always close response body, but keep error for checking
+		defer resp.Body.Close()
+
+		if resp.StatusCode != http.StatusOK {
+			lastErr = fmt.Errorf("error downloading file: %s", resp.Status)
+			log.Error("Error downloading file",
+				zap.String("status", resp.Status),
+				zap.Int("attempt", attempt))
+			continue
+		}
+
+		file, err := os.Create(target)
+		if err != nil {
+			lastErr = err
+			log.Error("Error creating file", zap.Error(err))
+			return err // Don't retry file creation errors
+		}
+		defer file.Close()
+
+		_, err = io.Copy(file, resp.Body)
+		if err != nil {
+			lastErr = err
+			log.Error("Error writing file",
+				zap.Error(err),
+				zap.Int("attempt", attempt))
+			continue
+		}
+
+		// If we get here, the download was successful
+		log.Info("File downloaded successfully",
+			zap.String("url", url),
+			zap.String("target", target),
+			zap.Int("attempts", attempt+1))
+		return nil
 	}
 
-	resp, err := client.Do(req)
-	if err != nil {
-		log.Error("Error downloading file", zap.Error(err))
-		return err
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		log.Error("Error downloading file", zap.String("status", resp.Status))
-		return fmt.Errorf("error downloading file: %s", resp.Status)
-	}
-
-	file, err := os.Create(target)
-	if err != nil {
-		log.Error("Error creating file", zap.Error(err))
-		return err
-	}
-	defer file.Close()
-
-	_, err = io.Copy(file, resp.Body)
-	if err != nil {
-		log.Error("Error writing file", zap.Error(err))
-		return err
-	}
-
-	return nil
+	return fmt.Errorf("failed after %d attempts, last error: %v", maxRetries, lastErr)
 }
+
 func (g *Generator) Download(log *zap.Logger, version string) error {
 	if len(g.maps) == 0 {
 		log.Warn("No maps loaded")
