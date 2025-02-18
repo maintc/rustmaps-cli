@@ -26,7 +26,6 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 
 				var response *RustMapsGenerateResponse
 				if req.MapParameters.Seed == "1" {
-					w.WriteHeader(http.StatusOK)
 					response = &RustMapsGenerateResponse{
 						Meta: RustMapsGenerateResponseMeta{
 							Status:     "complete",
@@ -34,8 +33,23 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 							Errors:     []string{},
 						},
 					}
+				} else if req.MapParameters.Seed == "1111" {
+					response = &RustMapsGenerateResponse{
+						Meta: RustMapsGenerateResponseMeta{
+							Status:     "complete",
+							StatusCode: 201,
+							Errors:     []string{},
+						},
+					}
+				} else if req.MapParameters.Seed == "11" {
+					response = &RustMapsGenerateResponse{
+						Meta: RustMapsGenerateResponseMeta{
+							Status:     "complete",
+							StatusCode: 400,
+							Errors:     []string{},
+						},
+					}
 				} else if req.MapParameters.Seed == "2" {
-					w.WriteHeader(http.StatusUnauthorized)
 					response = &RustMapsGenerateResponse{
 						Meta: RustMapsGenerateResponseMeta{
 							Status:     "complete",
@@ -44,7 +58,6 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 						},
 					}
 				} else if req.MapParameters.Seed == "3" {
-					w.WriteHeader(http.StatusForbidden)
 					response = &RustMapsGenerateResponse{
 						Meta: RustMapsGenerateResponseMeta{
 							Status:     "complete",
@@ -53,7 +66,6 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 						},
 					}
 				} else if req.MapParameters.Seed == "4" {
-					w.WriteHeader(http.StatusConflict)
 					response = &RustMapsGenerateResponse{
 						Meta: RustMapsGenerateResponseMeta{
 							Status:     "complete",
@@ -62,7 +74,6 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 						},
 					}
 				} else {
-					w.WriteHeader(http.StatusInternalServerError)
 					response = &RustMapsGenerateResponse{
 						Meta: RustMapsGenerateResponseMeta{
 							Status:     "error",
@@ -71,6 +82,7 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 						},
 					}
 				}
+				w.WriteHeader(response.Meta.StatusCode)
 				json.NewEncoder(w).Encode(response)
 				return
 			}
@@ -117,6 +129,55 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 					Errors:     []string{},
 				},
 			},
+		},
+		{
+			name: "GenerateCustom 201",
+			fields: fields{
+				apiURL:      mockServer.URL,
+				apiKey:      "test",
+				rateLimiter: &RateLimiter{},
+			},
+			args: args{
+				log: zap.NewNop(),
+				m: &types.Map{
+					Size:        3500,
+					Seed:        "1111",
+					Staging:     false,
+					SavedConfig: "default",
+				},
+			},
+			want: &RustMapsGenerateResponse{
+				Meta: RustMapsGenerateResponseMeta{
+					Status:     "complete",
+					StatusCode: 201,
+					Errors:     []string{},
+				},
+			},
+		},
+		{
+			name: "GenerateCustom 400",
+			fields: fields{
+				apiURL:      mockServer.URL,
+				apiKey:      "test",
+				rateLimiter: &RateLimiter{},
+			},
+			args: args{
+				log: zap.NewNop(),
+				m: &types.Map{
+					Size:        3500,
+					Seed:        "11",
+					Staging:     false,
+					SavedConfig: "default",
+				},
+			},
+			want: &RustMapsGenerateResponse{
+				Meta: RustMapsGenerateResponseMeta{
+					Status:     "complete",
+					StatusCode: 400,
+					Errors:     []string{},
+				},
+			},
+			wantErr: true,
 		},
 		{
 			name: "GenerateCustom 401",
@@ -189,6 +250,31 @@ func TestRustMapsClient_GenerateCustom(t *testing.T) {
 		},
 		{
 			name: "GenerateCustom 500",
+			fields: fields{
+				apiURL:      mockServer.URL,
+				apiKey:      "test",
+				rateLimiter: &RateLimiter{},
+			},
+			args: args{
+				log: zap.NewNop(),
+				m: &types.Map{
+					Size:        3500,
+					Seed:        "111",
+					Staging:     false,
+					SavedConfig: "default",
+				},
+			},
+			want: &RustMapsGenerateResponse{
+				Meta: RustMapsGenerateResponseMeta{
+					Status:     "complete",
+					StatusCode: 400,
+					Errors:     []string{},
+				},
+			},
+			wantErr: true,
+		},
+		{
+			name: "GenerateCustom 500 part 2",
 			fields: fields{
 				apiURL:      "http://localhost",
 				apiKey:      "test",
