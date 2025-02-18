@@ -1,6 +1,7 @@
 package rustmaps
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -11,6 +12,13 @@ import (
 	"github.com/maintc/rustmaps-cli/pkg/common"
 	"go.uber.org/zap"
 )
+
+type DownloadLinks struct {
+	MapURL       string `json:"map_url"`
+	ImageURL     string `json:"image_url"`
+	ImageIconURL string `json:"image_icon_url"`
+	ThumbnailURL string `json:"thumbnail_url"`
+}
 
 func (g *Generator) OverrideDownloadsDir(log *zap.Logger, dir string) {
 	g.downloadsDir = dir
@@ -89,11 +97,34 @@ func (g *Generator) Download(log *zap.Logger, version string) error {
 				log.Error("Error creating downloads directory", zap.Error(err))
 				return err
 			}
-			mapTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s.map", m.Seed, m.Size, m.MapID))
-			imageTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s.png", m.Seed, m.Size, m.MapID))
-			imageWithIconsTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_icons.png", m.Seed, m.Size, m.MapID))
-			thumbnailTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_thumbnail.png", m.Seed, m.Size, m.MapID))
-			fmt.Printf("Download URL: %s\n", status.Data.DownloadURL)
+			savedConfig := m.SavedConfig
+			if savedConfig == "" {
+				savedConfig = "procedural"
+			}
+			mapTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s.map", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
+			imageTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s.png", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
+			imageWithIconsTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s_icons.png", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
+			thumbnailTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s_thumbnail.png", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
+			downloadLinksTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s_download_links.json", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
+			// create a json file next to the rest that contains the download urls
+			log.Info("Downloading assets", zap.String("seed", m.Seed), zap.String("map_id", m.MapID))
+			links := DownloadLinks{
+				MapURL:       status.Data.DownloadURL,
+				ImageURL:     status.Data.ImageURL,
+				ImageIconURL: status.Data.ImageIconURL,
+				ThumbnailURL: status.Data.ThumbnailURL,
+			}
+			downloadLinksData, err := json.MarshalIndent(links, "", "  ")
+			if err != nil {
+				log.Error("Error marshalling JSON", zap.Error(err))
+				return err
+			}
+			log.Info("Writing download links", zap.String("target", downloadLinksTarget))
+			if err := os.WriteFile(downloadLinksTarget, downloadLinksData, 0644); err != nil {
+				log.Error("Error writing JSON file", zap.Error(err))
+				return err
+			}
+
 			if err := g.DownloadFile(log, status.Data.DownloadURL, mapTarget); err != nil {
 				log.Error("Error downloading map", zap.String("seed", m.Seed), zap.Error(err))
 				return err
