@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -42,7 +43,7 @@ var generateCmd = &cobra.Command{
 			version := now.Format("2006-01-02_15-04-05")
 			if err := generator.Download(logger, version); err != nil {
 				fmt.Printf("Error downloading maps: %v\n", err)
-				return
+				os.Exit(1)
 			}
 
 			fmt.Printf("Maps downloaded to %s\n", filepath.Join(generator.GetDownloadsDir(), version))
