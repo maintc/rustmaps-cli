@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.81352836" branch-rate="0" lines-covered="445" lines-valid="547" branches-covered="0" branches-valid="0" complexity="0" version="" timestamp="1739864455969">
+<coverage line-rate="0.81352836" branch-rate="0" lines-covered="445" lines-valid="547" branches-covered="0" branches-valid="0" complexity="0" version="" timestamp="1739864601772">
 	<packages>
 		<package name="github.com/maintc/rustmaps-cli" line-rate="1" branch-rate="0" complexity="0" line-count="1" line-hits="1">
 			<classes>
@@ -446,6 +446,156 @@
 		</package>
 		<package name="github.com/maintc/rustmaps-cli/pkg/rustmaps" line-rate="0.83383685" branch-rate="0" complexity="0" line-count="331" line-hits="276">
 			<classes>
+				<class name="Generator" filename="pkg/rustmaps/generate.go" line-rate="0.82758623" branch-rate="0" complexity="0" line-count="29" line-hits="24">
+					<methods>
+						<method name="Generate" signature="" line-rate="0.82758623" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="12" hits="4"></line>
+								<line number="13" hits="1"></line>
+								<line number="14" hits="1"></line>
+								<line number="17" hits="3"></line>
+								<line number="18" hits="1"></line>
+								<line number="19" hits="1"></line>
+								<line number="22" hits="2"></line>
+								<line number="23" hits="4"></line>
+								<line number="24" hits="1"></line>
+								<line number="25" hits="0"></line>
+								<line number="28" hits="1"></line>
+								<line number="29" hits="0"></line>
+								<line number="33" hits="4"></line>
+								<line number="34" hits="1"></line>
+								<line number="35" hits="0"></line>
+								<line number="36" hits="0"></line>
+								<line number="41" hits="2"></line>
+								<line number="42" hits="1"></line>
+								<line number="43" hits="1"></line>
+								<line number="46" hits="1"></line>
+								<line number="47" hits="1"></line>
+								<line number="48" hits="1"></line>
+								<line number="49" hits="1"></line>
+								<line number="51" hits="0"></line>
+								<line number="54" hits="1"></line>
+								<line number="55" hits="1"></line>
+								<line number="58" hits="1"></line>
+								<line number="62" hits="1"></line>
+								<line number="63" hits="1"></line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="12" hits="4"></line>
+						<line number="13" hits="1"></line>
+						<line number="14" hits="1"></line>
+						<line number="17" hits="3"></line>
+						<line number="18" hits="1"></line>
+						<line number="19" hits="1"></line>
+						<line number="22" hits="2"></line>
+						<line number="23" hits="4"></line>
+						<line number="24" hits="1"></line>
+						<line number="25" hits="0"></line>
+						<line number="28" hits="1"></line>
+						<line number="29" hits="0"></line>
+						<line number="33" hits="4"></line>
+						<line number="34" hits="1"></line>
+						<line number="35" hits="0"></line>
+						<line number="36" hits="0"></line>
+						<line number="41" hits="2"></line>
+						<line number="42" hits="1"></line>
+						<line number="43" hits="1"></line>
+						<line number="46" hits="1"></line>
+						<line number="47" hits="1"></line>
+						<line number="48" hits="1"></line>
+						<line number="49" hits="1"></line>
+						<line number="51" hits="0"></line>
+						<line number="54" hits="1"></line>
+						<line number="55" hits="1"></line>
+						<line number="58" hits="1"></line>
+						<line number="62" hits="1"></line>
+						<line number="63" hits="1"></line>
+					</lines>
+				</class>
+				<class name="Generator" filename="pkg/rustmaps/helpers.go" line-rate="1" branch-rate="0" complexity="0" line-count="17" line-hits="17">
+					<methods>
+						<method name="IsApiKeySet" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="13" hits="2"></line>
+							</lines>
+						</method>
+						<method name="Pending" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="17" hits="7"></line>
+								<line number="18" hits="7"></line>
+								<line number="19" hits="5"></line>
+								<line number="22" hits="2"></line>
+							</lines>
+						</method>
+						<method name="Generating" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="26" hits="3"></line>
+								<line number="27" hits="3"></line>
+								<line number="28" hits="1"></line>
+								<line number="31" hits="2"></line>
+							</lines>
+						</method>
+						<method name="ContainCustomMaps" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="35" hits="3"></line>
+								<line number="36" hits="3"></line>
+								<line number="37" hits="2"></line>
+								<line number="40" hits="1"></line>
+							</lines>
+						</method>
+						<method name="GetRandomSeed" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="45" hits="1"></line>
+								<line number="48" hits="1"></line>
+								<line number="51" hits="1"></line>
+								<line number="54" hits="1"></line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="13" hits="2"></line>
+						<line number="17" hits="7"></line>
+						<line number="18" hits="7"></line>
+						<line number="19" hits="5"></line>
+						<line number="22" hits="2"></line>
+						<line number="26" hits="3"></line>
+						<line number="27" hits="3"></line>
+						<line number="28" hits="1"></line>
+						<line number="31" hits="2"></line>
+						<line number="35" hits="3"></line>
+						<line number="36" hits="3"></line>
+						<line number="37" hits="2"></line>
+						<line number="40" hits="1"></line>
+						<line number="45" hits="1"></line>
+						<line number="48" hits="1"></line>
+						<line number="51" hits="1"></line>
+						<line number="54" hits="1"></line>
+					</lines>
+				</class>
+				<class name="-" filename="pkg/rustmaps/helpers.go" line-rate="1" branch-rate="0" complexity="0" line-count="4" line-hits="4">
+					<methods>
+						<method name="parseInt" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="58" hits="11"></line>
+								<line number="59" hits="11"></line>
+								<line number="60" hits="11"></line>
+							</lines>
+						</method>
+						<method name="parseBool" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="64" hits="4"></line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="58" hits="11"></line>
+						<line number="59" hits="11"></line>
+						<line number="60" hits="11"></line>
+						<line number="64" hits="4"></line>
+					</lines>
+				</class>
 				<class name="Generator" filename="pkg/rustmaps/import.go" line-rate="0.86734694" branch-rate="0" complexity="0" line-count="98" line-hits="85">
 					<methods>
 						<method name="LoadCSV" signature="" line-rate="0.9318182" branch-rate="0" complexity="0" line-count="0" line-hits="0">
@@ -660,128 +810,6 @@
 						<line number="194" hits="2"></line>
 					</lines>
 				</class>
-				<class name="-" filename="pkg/rustmaps/main.go" line-rate="0.8888889" branch-rate="0" complexity="0" line-count="9" line-hits="8">
-					<methods>
-						<method name="NewGenerator" signature="" line-rate="0.8888889" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="42" hits="2"></line>
-								<line number="47" hits="2"></line>
-								<line number="48" hits="1"></line>
-								<line number="49" hits="1"></line>
-								<line number="50" hits="1"></line>
-								<line number="51" hits="1"></line>
-								<line number="52" hits="0"></line>
-								<line number="56" hits="2"></line>
-								<line number="57" hits="2"></line>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="42" hits="2"></line>
-						<line number="47" hits="2"></line>
-						<line number="48" hits="1"></line>
-						<line number="49" hits="1"></line>
-						<line number="50" hits="1"></line>
-						<line number="51" hits="1"></line>
-						<line number="52" hits="0"></line>
-						<line number="56" hits="2"></line>
-						<line number="57" hits="2"></line>
-					</lines>
-				</class>
-				<class name="Generator" filename="pkg/rustmaps/main.go" line-rate="0.9117647" branch-rate="0" complexity="0" line-count="34" line-hits="31">
-					<methods>
-						<method name="InitDirs" signature="" line-rate="0.8888889" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="62" hits="1"></line>
-								<line number="63" hits="1"></line>
-								<line number="64" hits="1"></line>
-								<line number="65" hits="1"></line>
-								<line number="67" hits="1"></line>
-								<line number="68" hits="1"></line>
-								<line number="69" hits="3"></line>
-								<line number="70" hits="0"></line>
-								<line number="74" hits="1"></line>
-							</lines>
-						</method>
-						<method name="CanGenerate" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="78" hits="4"></line>
-								<line number="79" hits="4"></line>
-								<line number="80" hits="1"></line>
-								<line number="81" hits="1"></line>
-								<line number="84" hits="3"></line>
-								<line number="85" hits="3"></line>
-								<line number="87" hits="3"></line>
-								<line number="88" hits="1"></line>
-								<line number="91" hits="3"></line>
-								<line number="92" hits="1"></line>
-								<line number="95" hits="3"></line>
-							</lines>
-						</method>
-						<method name="GetStatus" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="99" hits="2"></line>
-								<line number="100" hits="2"></line>
-								<line number="101" hits="1"></line>
-								<line number="102" hits="1"></line>
-								<line number="105" hits="1"></line>
-							</lines>
-						</method>
-						<method name="SyncStatus" signature="" line-rate="0.71428573" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="109" hits="2"></line>
-								<line number="110" hits="2"></line>
-								<line number="111" hits="0"></line>
-								<line number="112" hits="0"></line>
-								<line number="115" hits="2"></line>
-								<line number="116" hits="2"></line>
-								<line number="117" hits="2"></line>
-							</lines>
-						</method>
-						<method name="AddMap" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="121" hits="1"></line>
-								<line number="122" hits="1"></line>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="62" hits="1"></line>
-						<line number="63" hits="1"></line>
-						<line number="64" hits="1"></line>
-						<line number="65" hits="1"></line>
-						<line number="67" hits="1"></line>
-						<line number="68" hits="1"></line>
-						<line number="69" hits="3"></line>
-						<line number="70" hits="0"></line>
-						<line number="74" hits="1"></line>
-						<line number="78" hits="4"></line>
-						<line number="79" hits="4"></line>
-						<line number="80" hits="1"></line>
-						<line number="81" hits="1"></line>
-						<line number="84" hits="3"></line>
-						<line number="85" hits="3"></line>
-						<line number="87" hits="3"></line>
-						<line number="88" hits="1"></line>
-						<line number="91" hits="3"></line>
-						<line number="92" hits="1"></line>
-						<line number="95" hits="3"></line>
-						<line number="99" hits="2"></line>
-						<line number="100" hits="2"></line>
-						<line number="101" hits="1"></line>
-						<line number="102" hits="1"></line>
-						<line number="105" hits="1"></line>
-						<line number="109" hits="2"></line>
-						<line number="110" hits="2"></line>
-						<line number="111" hits="0"></line>
-						<line number="112" hits="0"></line>
-						<line number="115" hits="2"></line>
-						<line number="116" hits="2"></line>
-						<line number="117" hits="2"></line>
-						<line number="121" hits="1"></line>
-						<line number="122" hits="1"></line>
-					</lines>
-				</class>
 				<class name="Generator" filename="pkg/rustmaps/setters.go" line-rate="1" branch-rate="0" complexity="0" line-count="3" line-hits="3">
 					<methods>
 						<method name="SetApiKey" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
@@ -800,192 +828,6 @@
 						<line number="4" hits="2"></line>
 						<line number="5" hits="2"></line>
 						<line number="9" hits="1"></line>
-					</lines>
-				</class>
-				<class name="Generator" filename="pkg/rustmaps/generate.go" line-rate="0.82758623" branch-rate="0" complexity="0" line-count="29" line-hits="24">
-					<methods>
-						<method name="Generate" signature="" line-rate="0.82758623" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="12" hits="4"></line>
-								<line number="13" hits="1"></line>
-								<line number="14" hits="1"></line>
-								<line number="17" hits="3"></line>
-								<line number="18" hits="1"></line>
-								<line number="19" hits="1"></line>
-								<line number="22" hits="2"></line>
-								<line number="23" hits="4"></line>
-								<line number="24" hits="1"></line>
-								<line number="25" hits="0"></line>
-								<line number="28" hits="1"></line>
-								<line number="29" hits="0"></line>
-								<line number="33" hits="4"></line>
-								<line number="34" hits="1"></line>
-								<line number="35" hits="0"></line>
-								<line number="36" hits="0"></line>
-								<line number="41" hits="2"></line>
-								<line number="42" hits="1"></line>
-								<line number="43" hits="1"></line>
-								<line number="46" hits="1"></line>
-								<line number="47" hits="1"></line>
-								<line number="48" hits="1"></line>
-								<line number="49" hits="1"></line>
-								<line number="51" hits="0"></line>
-								<line number="54" hits="1"></line>
-								<line number="55" hits="1"></line>
-								<line number="58" hits="1"></line>
-								<line number="62" hits="1"></line>
-								<line number="63" hits="1"></line>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="12" hits="4"></line>
-						<line number="13" hits="1"></line>
-						<line number="14" hits="1"></line>
-						<line number="17" hits="3"></line>
-						<line number="18" hits="1"></line>
-						<line number="19" hits="1"></line>
-						<line number="22" hits="2"></line>
-						<line number="23" hits="4"></line>
-						<line number="24" hits="1"></line>
-						<line number="25" hits="0"></line>
-						<line number="28" hits="1"></line>
-						<line number="29" hits="0"></line>
-						<line number="33" hits="4"></line>
-						<line number="34" hits="1"></line>
-						<line number="35" hits="0"></line>
-						<line number="36" hits="0"></line>
-						<line number="41" hits="2"></line>
-						<line number="42" hits="1"></line>
-						<line number="43" hits="1"></line>
-						<line number="46" hits="1"></line>
-						<line number="47" hits="1"></line>
-						<line number="48" hits="1"></line>
-						<line number="49" hits="1"></line>
-						<line number="51" hits="0"></line>
-						<line number="54" hits="1"></line>
-						<line number="55" hits="1"></line>
-						<line number="58" hits="1"></line>
-						<line number="62" hits="1"></line>
-						<line number="63" hits="1"></line>
-					</lines>
-				</class>
-				<class name="Generator" filename="pkg/rustmaps/getters.go" line-rate="1" branch-rate="0" complexity="0" line-count="5" line-hits="5">
-					<methods>
-						<method name="GetDownloadsDir" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="6" hits="1"></line>
-							</lines>
-						</method>
-						<method name="GetImportDir" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="10" hits="1"></line>
-							</lines>
-						</method>
-						<method name="GetLogPath" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="14" hits="1"></line>
-							</lines>
-						</method>
-						<method name="GetConfigPath" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="18" hits="1"></line>
-							</lines>
-						</method>
-						<method name="GetMaps" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="22" hits="1"></line>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="6" hits="1"></line>
-						<line number="10" hits="1"></line>
-						<line number="14" hits="1"></line>
-						<line number="18" hits="1"></line>
-						<line number="22" hits="1"></line>
-					</lines>
-				</class>
-				<class name="Generator" filename="pkg/rustmaps/helpers.go" line-rate="1" branch-rate="0" complexity="0" line-count="17" line-hits="17">
-					<methods>
-						<method name="IsApiKeySet" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="13" hits="2"></line>
-							</lines>
-						</method>
-						<method name="Pending" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="17" hits="7"></line>
-								<line number="18" hits="7"></line>
-								<line number="19" hits="5"></line>
-								<line number="22" hits="2"></line>
-							</lines>
-						</method>
-						<method name="Generating" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="26" hits="3"></line>
-								<line number="27" hits="3"></line>
-								<line number="28" hits="1"></line>
-								<line number="31" hits="2"></line>
-							</lines>
-						</method>
-						<method name="ContainCustomMaps" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="35" hits="3"></line>
-								<line number="36" hits="3"></line>
-								<line number="37" hits="2"></line>
-								<line number="40" hits="1"></line>
-							</lines>
-						</method>
-						<method name="GetRandomSeed" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="45" hits="1"></line>
-								<line number="48" hits="1"></line>
-								<line number="51" hits="1"></line>
-								<line number="54" hits="1"></line>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="13" hits="2"></line>
-						<line number="17" hits="7"></line>
-						<line number="18" hits="7"></line>
-						<line number="19" hits="5"></line>
-						<line number="22" hits="2"></line>
-						<line number="26" hits="3"></line>
-						<line number="27" hits="3"></line>
-						<line number="28" hits="1"></line>
-						<line number="31" hits="2"></line>
-						<line number="35" hits="3"></line>
-						<line number="36" hits="3"></line>
-						<line number="37" hits="2"></line>
-						<line number="40" hits="1"></line>
-						<line number="45" hits="1"></line>
-						<line number="48" hits="1"></line>
-						<line number="51" hits="1"></line>
-						<line number="54" hits="1"></line>
-					</lines>
-				</class>
-				<class name="-" filename="pkg/rustmaps/helpers.go" line-rate="1" branch-rate="0" complexity="0" line-count="4" line-hits="4">
-					<methods>
-						<method name="parseInt" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="58" hits="11"></line>
-								<line number="59" hits="11"></line>
-								<line number="60" hits="11"></line>
-							</lines>
-						</method>
-						<method name="parseBool" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
-							<lines>
-								<line number="64" hits="4"></line>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="58" hits="11"></line>
-						<line number="59" hits="11"></line>
-						<line number="60" hits="11"></line>
-						<line number="64" hits="4"></line>
 					</lines>
 				</class>
 				<class name="Generator" filename="pkg/rustmaps/auth.go" line-rate="0.73333335" branch-rate="0" complexity="0" line-count="15" line-hits="11">
@@ -1296,6 +1138,164 @@
 						<line number="190" hits="0"></line>
 						<line number="191" hits="0"></line>
 						<line number="196" hits="2"></line>
+					</lines>
+				</class>
+				<class name="Generator" filename="pkg/rustmaps/getters.go" line-rate="1" branch-rate="0" complexity="0" line-count="5" line-hits="5">
+					<methods>
+						<method name="GetDownloadsDir" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="6" hits="1"></line>
+							</lines>
+						</method>
+						<method name="GetImportDir" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="10" hits="1"></line>
+							</lines>
+						</method>
+						<method name="GetLogPath" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="14" hits="1"></line>
+							</lines>
+						</method>
+						<method name="GetConfigPath" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="18" hits="1"></line>
+							</lines>
+						</method>
+						<method name="GetMaps" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="22" hits="1"></line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="6" hits="1"></line>
+						<line number="10" hits="1"></line>
+						<line number="14" hits="1"></line>
+						<line number="18" hits="1"></line>
+						<line number="22" hits="1"></line>
+					</lines>
+				</class>
+				<class name="-" filename="pkg/rustmaps/main.go" line-rate="0.8888889" branch-rate="0" complexity="0" line-count="9" line-hits="8">
+					<methods>
+						<method name="NewGenerator" signature="" line-rate="0.8888889" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="42" hits="2"></line>
+								<line number="47" hits="2"></line>
+								<line number="48" hits="1"></line>
+								<line number="49" hits="1"></line>
+								<line number="50" hits="1"></line>
+								<line number="51" hits="1"></line>
+								<line number="52" hits="0"></line>
+								<line number="56" hits="2"></line>
+								<line number="57" hits="2"></line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="42" hits="2"></line>
+						<line number="47" hits="2"></line>
+						<line number="48" hits="1"></line>
+						<line number="49" hits="1"></line>
+						<line number="50" hits="1"></line>
+						<line number="51" hits="1"></line>
+						<line number="52" hits="0"></line>
+						<line number="56" hits="2"></line>
+						<line number="57" hits="2"></line>
+					</lines>
+				</class>
+				<class name="Generator" filename="pkg/rustmaps/main.go" line-rate="0.9117647" branch-rate="0" complexity="0" line-count="34" line-hits="31">
+					<methods>
+						<method name="InitDirs" signature="" line-rate="0.8888889" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="62" hits="1"></line>
+								<line number="63" hits="1"></line>
+								<line number="64" hits="1"></line>
+								<line number="65" hits="1"></line>
+								<line number="67" hits="1"></line>
+								<line number="68" hits="1"></line>
+								<line number="69" hits="3"></line>
+								<line number="70" hits="0"></line>
+								<line number="74" hits="1"></line>
+							</lines>
+						</method>
+						<method name="CanGenerate" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="78" hits="4"></line>
+								<line number="79" hits="4"></line>
+								<line number="80" hits="1"></line>
+								<line number="81" hits="1"></line>
+								<line number="84" hits="3"></line>
+								<line number="85" hits="3"></line>
+								<line number="87" hits="3"></line>
+								<line number="88" hits="1"></line>
+								<line number="91" hits="3"></line>
+								<line number="92" hits="1"></line>
+								<line number="95" hits="3"></line>
+							</lines>
+						</method>
+						<method name="GetStatus" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="99" hits="2"></line>
+								<line number="100" hits="2"></line>
+								<line number="101" hits="1"></line>
+								<line number="102" hits="1"></line>
+								<line number="105" hits="1"></line>
+							</lines>
+						</method>
+						<method name="SyncStatus" signature="" line-rate="0.71428573" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="109" hits="2"></line>
+								<line number="110" hits="2"></line>
+								<line number="111" hits="0"></line>
+								<line number="112" hits="0"></line>
+								<line number="115" hits="2"></line>
+								<line number="116" hits="2"></line>
+								<line number="117" hits="2"></line>
+							</lines>
+						</method>
+						<method name="AddMap" signature="" line-rate="1" branch-rate="0" complexity="0" line-count="0" line-hits="0">
+							<lines>
+								<line number="121" hits="1"></line>
+								<line number="122" hits="1"></line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="62" hits="1"></line>
+						<line number="63" hits="1"></line>
+						<line number="64" hits="1"></line>
+						<line number="65" hits="1"></line>
+						<line number="67" hits="1"></line>
+						<line number="68" hits="1"></line>
+						<line number="69" hits="3"></line>
+						<line number="70" hits="0"></line>
+						<line number="74" hits="1"></line>
+						<line number="78" hits="4"></line>
+						<line number="79" hits="4"></line>
+						<line number="80" hits="1"></line>
+						<line number="81" hits="1"></line>
+						<line number="84" hits="3"></line>
+						<line number="85" hits="3"></line>
+						<line number="87" hits="3"></line>
+						<line number="88" hits="1"></line>
+						<line number="91" hits="3"></line>
+						<line number="92" hits="1"></line>
+						<line number="95" hits="3"></line>
+						<line number="99" hits="2"></line>
+						<line number="100" hits="2"></line>
+						<line number="101" hits="1"></line>
+						<line number="102" hits="1"></line>
+						<line number="105" hits="1"></line>
+						<line number="109" hits="2"></line>
+						<line number="110" hits="2"></line>
+						<line number="111" hits="0"></line>
+						<line number="112" hits="0"></line>
+						<line number="115" hits="2"></line>
+						<line number="116" hits="2"></line>
+						<line number="117" hits="2"></line>
+						<line number="121" hits="1"></line>
+						<line number="122" hits="1"></line>
 					</lines>
 				</class>
 			</classes>
