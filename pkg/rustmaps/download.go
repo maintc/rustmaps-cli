@@ -143,6 +143,7 @@ func (g *Generator) Download(log *zap.Logger, version string) error {
 			imageWithIconsTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_icons.png", prefix))
 			thumbnailTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_thumbnail.png", prefix))
 			downloadLinksTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_download_links.json", prefix))
+			mapSpecsTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_specs.json", prefix))
 			// create a json file next to the rest that contains the download urls
 			log.Info("Downloading assets", zap.String("seed", m.Seed), zap.String("map_id", m.MapID))
 			links := DownloadLinks{
@@ -158,6 +159,17 @@ func (g *Generator) Download(log *zap.Logger, version string) error {
 			}
 			log.Info("Writing download links", zap.String("target", downloadLinksTarget))
 			if err := os.WriteFile(downloadLinksTarget, downloadLinksData, 0644); err != nil {
+				log.Error("Error writing JSON file", zap.Error(err))
+				return err
+			}
+
+			mapSpecsData, err := json.MarshalIndent(status, "", "  ")
+			if err != nil {
+				log.Error("Error marshalling JSON", zap.Error(err))
+				return err
+			}
+			log.Info("Writing map specs", zap.String("target", mapSpecsTarget))
+			if err := os.WriteFile(mapSpecsTarget, mapSpecsData, 0644); err != nil {
 				log.Error("Error writing JSON file", zap.Error(err))
 				return err
 			}
