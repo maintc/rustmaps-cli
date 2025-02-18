@@ -101,11 +101,12 @@ func (g *Generator) Download(log *zap.Logger, version string) error {
 			if savedConfig == "" {
 				savedConfig = "procedural"
 			}
-			mapTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s.map", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
-			imageTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s.png", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
-			imageWithIconsTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s_icons.png", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
-			thumbnailTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s_thumbnail.png", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
-			downloadLinksTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_%d_%s_%t_%s_download_links.json", m.Seed, m.Size, savedConfig, m.Staging, m.MapID))
+			prefix := fmt.Sprintf("%s_%d_%s_%t_%s", m.Seed, m.Size, savedConfig, m.Staging, m.MapID)
+			mapTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s.map", prefix))
+			imageTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s.png", prefix))
+			imageWithIconsTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_icons.png", prefix))
+			thumbnailTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_thumbnail.png", prefix))
+			downloadLinksTarget := filepath.Join(downloadsDir, fmt.Sprintf("%s_download_links.json", prefix))
 			// create a json file next to the rest that contains the download urls
 			log.Info("Downloading assets", zap.String("seed", m.Seed), zap.String("map_id", m.MapID))
 			links := DownloadLinks{
