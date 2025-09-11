@@ -35,6 +35,7 @@ type RustMapsStatusResponseDataBiomePercentages struct {
 	D float64 `json:"d"`
 	F float64 `json:"f"`
 	T float64 `json:"t"`
+	J float64 `json:"j"`
 }
 
 type RustMapsStatusResponseData struct {
