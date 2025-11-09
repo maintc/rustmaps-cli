@@ -1,6 +1,6 @@
 # RustMaps CLI (Unofficial)
 
-<a href="https://discord.gg/mainloot"><img src="./docs/images/mainloot-logo.png" alt="Mainloot Logo" style="width: 50%; height: auto;"></a> **&**
+<a href="https://discord.gg/mainloot"><img src="https://mainloot.s3.us-west-2.amazonaws.com/Mainloot_Logo_OnBlack.png" alt="Mainloot Logo" style="width: 50%; height: auto;"></a> **&**
 <a href="https://rustmaps.com"><img src="./docs/images/rustmaps.svg" alt="Mainloot Logo" style="width: 50%; height: auto;"></a>
 
 ![CI Status](https://github.com/maintc/rustmaps-cli/actions/workflows/build.yml/badge.svg)
